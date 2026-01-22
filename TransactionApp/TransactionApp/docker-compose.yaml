@@ -18,23 +18,23 @@ services:
     image: transaction-app:latest      # set image name
     container_name: transaction-app
     ports:
-      - "8080:8080"                 # external port : internal port
+      - "8080:8080"                  # external port : internal port
     environment:
       ConnectionStrings__MongoDb: "" # environment variable to the app container
     depends_on:
-      - mongodb # ensures starts first
+      - mongodb                      # ensures starts first
     networks:
       - mongo-network
 
 volumes:
       db-data:
-        driver: local                   # drivers - where the directory is created
+        driver: local                # drivers - where the directory is created
       db-config:
         driver: local
 
 networks:
   mongo-network:
-    driver: bridge                      # creates a private, internal network
+    driver: bridge                   # creates a private, internal network
 
 
 # bash

@@ -4,7 +4,7 @@ using TransactionApp;
 
 Console.WriteLine("Running app...");
 
-MongoClientSettings settings = MongoClientSettings.FromConnectionString("mongodb://mongodb:27017");
+MongoClientSettings settings = MongoClientSettings.FromConnectionString("mongodb://mongodb-database:27017");
 
 MongoClient client = new MongoClient(settings);
 
