@@ -1,12 +1,17 @@
 
-db = db.getSiblingDB("local");
+db = db.getSiblingDB("app");
 db.createCollection("transaction");
 
-//db.transaction.insertOne({ _id: "3fa85f64-5717-4562-b3fc-2c963f66afa6" })
+var count = 350000;
 
-db.transaction.insertMany(
-    [
-        { _id: "3fa85f64-5717-4562-b3fc-2c963f66afa6" },
-        { _id: "3fa85f64-5717-4562-b3fc-2c963f66afa7" },
-    ]
-);
+var transactions = [];
+
+for (var i = 0; i < count; i++) {
+    transactions.push({ _id: crypto.randomUUID() });
+}
+
+db.transaction.insertMany(transactions);
+
+
+db = db.getSiblingDB("app-new");
+db.createCollection("transaction-new");

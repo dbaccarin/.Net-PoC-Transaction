@@ -20,7 +20,7 @@ services:
     ports:
       - "8080:8080"                  # external port : internal port
     environment:
-      ConnectionStrings__MongoDb: "" # environment variable to the app container
+      ConnectionStrings__MongoDb: "mongodb://mongodb-database:27017"    # environment variable to the app container
     depends_on:
       - mongodb                      # ensures starts first
     networks:
@@ -41,4 +41,4 @@ networks:
 # docker compose up --build -d
 
 # bash
-# docker compose down
+# docker compose down --volumes
