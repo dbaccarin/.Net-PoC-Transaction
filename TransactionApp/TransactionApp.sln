@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionApp", "TransactionApp\TransactionApp.csproj", "{7597F901-B92C-4C7F-A835-D6065EF66483}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		mongo-init.js = mongo-init.js
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransfer.Sequential", "DataTransfer.Sequential\DataTransfer.Sequential.csproj", "{5E0FCAA3-F40B-48AF-A2E9-B4BF88A007B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransfer.Parallel", "DataTransfer.Parallel\DataTransfer.Parallel.csproj", "{58003F4D-A534-4B72-B2A7-6CE6B48DEA79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,14 @@ Global
 		{7597F901-B92C-4C7F-A835-D6065EF66483}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7597F901-B92C-4C7F-A835-D6065EF66483}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7597F901-B92C-4C7F-A835-D6065EF66483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0FCAA3-F40B-48AF-A2E9-B4BF88A007B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0FCAA3-F40B-48AF-A2E9-B4BF88A007B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0FCAA3-F40B-48AF-A2E9-B4BF88A007B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0FCAA3-F40B-48AF-A2E9-B4BF88A007B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58003F4D-A534-4B72-B2A7-6CE6B48DEA79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58003F4D-A534-4B72-B2A7-6CE6B48DEA79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58003F4D-A534-4B72-B2A7-6CE6B48DEA79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58003F4D-A534-4B72-B2A7-6CE6B48DEA79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

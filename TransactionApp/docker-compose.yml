@@ -13,10 +13,12 @@ services:
     networks:
         - mongo-network
 
-  app:
-    build: .                           # build from the local dockerfile
-    image: transaction-app:latest      # set image name
-    container_name: transaction-app
+  data-transfer-sequential:
+    build:                          # build from the local dockerfile
+        context: .
+        dockerfile: DataTransfer.Sequential/Dockerfile
+    image: data-transfer-sequential:latest      # set image name
+    container_name: data-transfer-sequential
     ports:
       - "8080:8080"                  # external port : internal port
     environment:
