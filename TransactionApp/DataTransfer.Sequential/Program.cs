@@ -8,31 +8,23 @@ MongoClientSettings settings = MongoClientSettings.FromConnectionString(connecti
 
 MongoClient client = new MongoClient(settings);
 
-IMongoCollection<Transaction> transactionsCollection = client.GetDatabase("app").GetCollection<Transaction>("transaction");
+IMongoCollection<Transaction> transactionsCollection = client.GetDatabase("data-transfer").GetCollection<Transaction>("transaction");
 
 var filter = Builders<Transaction>.Filter.Empty;
 
 var transactions = await transactionsCollection.Find(filter).ToListAsync();
 
-IMongoCollection<Transaction> transactionsNewCollection = client.GetDatabase("app-new").GetCollection<Transaction>("transaction-new");
+IMongoCollection<Transaction> transactionsNewCollection = client.GetDatabase("data-transfer-new").GetCollection<Transaction>("transaction-sequential");
 
+Console.WriteLine($"Starting data tranfer at {DateTime.Now}");
 var sw = Stopwatch.StartNew();
-
 
 foreach (var transaction in transactions)
 {
     transactionsNewCollection.InsertOne(transaction);
-    Console.WriteLine(transaction.Id);
 }
 
 sw.Stop();
 
-
-//await Parallel.ForEachAsync(transactions, new ParallelOptions { MaxDegreeOfParallelism = 8 }, async (transaction, cancellationToken) =>
-//{
-//    // Each thread sends a batch of 10,000 documents
-//    await transactionsNewCollection.InsertOneAsync(transaction, cancellationToken: cancellationToken);
-//});
-
-
-Console.WriteLine($"Finished in {sw.Elapsed.TotalSeconds} .Transactions count:{transactions.Count}");
+Console.WriteLine($"Finished in {sw.Elapsed.TotalSeconds} seconds.Transactions count:{transactions.Count}");
+Console.WriteLine($"Ended data tranfer at {DateTime.Now}");

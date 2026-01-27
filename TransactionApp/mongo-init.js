@@ -1,8 +1,8 @@
 
-db = db.getSiblingDB("app");
+db = db.getSiblingDB("data-transfer");
 db.createCollection("transaction");
 
-var count = 350000;
+var count = 500_000;
 
 var transactions = [];
 
@@ -13,5 +13,6 @@ for (var i = 0; i < count; i++) {
 db.transaction.insertMany(transactions);
 
 
-db = db.getSiblingDB("app-new");
-db.createCollection("transaction-new");
+db = db.getSiblingDB("data-transfer-new");
+db.createCollection("transaction-sequential");
+db.createCollection("transaction-pararallel");
