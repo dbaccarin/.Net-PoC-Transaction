@@ -1,4 +1,4 @@
-﻿using DataTransfer.Parallel;
+﻿using DataTransfer.Chunck;
 using MongoDB.Driver;
 using System.Diagnostics;
 
@@ -14,15 +14,16 @@ var filter = Builders<Transaction>.Filter.Empty;
 
 var transactions = await transactionsCollection.Find(filter).ToListAsync();
 
-IMongoCollection<Transaction> transactionsNewCollection = client.GetDatabase("data-transfer-new").GetCollection<Transaction>("transaction-parallel");
+IMongoCollection<Transaction> transactionsNewCollection = client.GetDatabase("data-transfer-new").GetCollection<Transaction>("transaction-chunck");
 
 var sw = Stopwatch.StartNew();
 
 Console.WriteLine($"Starting data transfer at {DateTime.Now}");
-await Parallel.ForEachAsync(transactions, new ParallelOptions { MaxDegreeOfParallelism = 8 }, async (transaction, cancellationToken) =>
+
+foreach (var chunk in transactions.Chunk(10_000))
 {
-    await transactionsNewCollection.InsertOneAsync(transaction, cancellationToken: cancellationToken);
-});
+    await transactionsNewCollection.InsertManyAsync(chunk);
+}
 
 sw.Stop();
 

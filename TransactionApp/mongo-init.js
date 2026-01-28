@@ -15,4 +15,5 @@ db.transaction.insertMany(transactions);
 
 db = db.getSiblingDB("data-transfer-new");
 db.createCollection("transaction-sequential");
-db.createCollection("transaction-pararallel");
+db.createCollection("transaction-parallel");
+db.createCollection("transaction-chunck");

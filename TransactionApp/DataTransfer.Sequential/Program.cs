@@ -16,7 +16,7 @@ var transactions = await transactionsCollection.Find(filter).ToListAsync();
 
 IMongoCollection<Transaction> transactionsNewCollection = client.GetDatabase("data-transfer-new").GetCollection<Transaction>("transaction-sequential");
 
-Console.WriteLine($"Starting data tranfer at {DateTime.Now}");
+Console.WriteLine($"Starting data transfer at {DateTime.Now}");
 var sw = Stopwatch.StartNew();
 
 foreach (var transaction in transactions)
@@ -27,4 +27,4 @@ foreach (var transaction in transactions)
 sw.Stop();
 
 Console.WriteLine($"Finished in {sw.Elapsed.TotalSeconds} seconds.Transactions count:{transactions.Count}");
-Console.WriteLine($"Ended data tranfer at {DateTime.Now}");
+Console.WriteLine($"Ended data transfer at {DateTime.Now}");
