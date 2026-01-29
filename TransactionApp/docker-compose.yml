@@ -19,8 +19,6 @@ services:
         dockerfile: DataTransfer.Sequential/Dockerfile
     image: data-transfer-sequential:latest      # set image name
     container_name: data-transfer-sequential
-    ports:
-      - "8080:8080"                  # external port : internal port
     environment:
       TZ: "America/Sao_Paulo"
       ConnectionStrings__MongoDb: "mongodb://mongodb-database:27017"    # environment variable to the app container        
@@ -35,8 +33,6 @@ services:
         dockerfile: DataTransfer.Parallel/Dockerfile
     image: data-transfer-parallel:latest      # set image name
     container_name: data-transfer-parallel
-    ports:
-      - "8081:8081"                  # external port : internal port
     environment:
       TZ: "America/Sao_Paulo"
       ConnectionStrings__MongoDb: "mongodb://mongodb-database:27017"    # environment variable to the app container        
@@ -51,8 +47,6 @@ services:
         dockerfile: DataTransfer.Chunck/Dockerfile
     image: data-transfer-chunck:latest      # set image name
     container_name: data-transfer-chunck
-    ports:
-      - "8082:8082"                  # external port : internal port
     environment:
       TZ: "America/Sao_Paulo"
       ConnectionStrings__MongoDb: "mongodb://mongodb-database:27017"    # environment variable to the app container        
